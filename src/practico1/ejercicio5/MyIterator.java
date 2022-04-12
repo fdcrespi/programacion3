@@ -4,7 +4,7 @@ import practico1.ejercicio1.Node;
 
 import java.util.Iterator;
 
-public class MyIterator <T> implements Iterator {
+public class MyIterator <T> implements Iterator<T> {
 
     private Node<T> cursor;
 

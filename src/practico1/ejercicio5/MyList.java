@@ -21,10 +21,13 @@ public class MyList <T> implements Iterable<T>{
     }
 
     public void insertBack(T info) {
-        // TODO Auto-generated method stub
-        Node<T> newNode = new Node<T>(info, null);
+        Node<T> newNode = new Node<T>(info);
         Node<T> ult = this.first;
         boolean insert = false;
+        if (ult == null){
+            this.first = newNode;
+            insert = true;
+        }
         while (ult != null && !insert) {
             if(ult.getNext() == null) {
                 ult.setNext(newNode);

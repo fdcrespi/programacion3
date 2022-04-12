@@ -9,6 +9,11 @@ public class Node <T>{
         this.next = next;
     }
 
+    public Node(T info){
+        this.info = info;
+        this.next = null;
+    }
+
     public T getInfo() {
         return info;
     }

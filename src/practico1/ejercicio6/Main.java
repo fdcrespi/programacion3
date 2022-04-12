@@ -5,7 +5,6 @@ import practico1.ejercicio5.MyList;
 
 public class Main {
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         MyList<Integer> list1 = new MyList<Integer>();
         MyList<Integer> list2 = new MyList<Integer>();
         list1.insertFront(24);
@@ -16,6 +15,8 @@ public class Main {
         list2.insertFront(19);
         list2.insertFront(14);
         list2.insertFront(5);
+        System.out.println(list1);
+        System.out.println(list2);
         // a) Construir una lista ordinada a partir de dos desordenadas
         MyList<Integer> list3 = listOrderListsOrdered(list1, list2);
         System.out.println(list3);
