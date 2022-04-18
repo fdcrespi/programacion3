@@ -1,6 +1,6 @@
 package practico2.ejercicio2;
 
-import practico1.ejercicio5.MyList;
+import practico1.ejercicio8.MyList;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,15 +9,17 @@ public class Main {
         list.insertFront(5);
         list.insertFront(18);
         list.insertFront(10);
-        System.out.println(searchInList(list,18, 0));
+        int pos = searchInList(list,8, 0);
+        System.out.println(pos);
     }
 
     private static int searchInList(MyList<Integer> list, int info, int inicio) {
-        if(list.isEmpty()) return -1;
-        if (inicio < list.size() || list.get(inicio) == info) {
-            searchInList(list, info, ++inicio);
+        if (list.isEmpty()) return -1;
+        int infoElem = list.get(inicio);
+        if (inicio < list.getSize() && infoElem != info) {
+            return searchInList(list, info, ++inicio);
         }
-        if (list.get(inicio) != null && list.get(inicio) == info) return inicio;
+        if (infoElem == info) return inicio;
         return -1;
     }
 }
