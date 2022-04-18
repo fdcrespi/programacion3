@@ -5,8 +5,8 @@ import practico1.ejercicio5.MyList;
 
 public class Main {
     public static void main(String[] args) {
-        MyList<Integer> list1 = new MyList<Integer>();
-        MyList<Integer> list2 = new MyList<Integer>();
+        MyList<Integer> list1 = new MyList<>();
+        MyList<Integer> list2 = new MyList<>();
         list1.insertFront(24);
         list1.insertFront(19);
         list1.insertFront(14);
@@ -28,7 +28,7 @@ public class Main {
     }
 
     private static MyList<Integer> listOrderListsOrdered(MyList<Integer> list1, MyList<Integer> list2) {
-        MyList<Integer> listResult = new MyList<Integer>();
+        MyList<Integer> listResult = new MyList<>();
         MyIterator<Integer> it1 = (MyIterator<Integer>) list1.iterator();
         MyIterator<Integer> it2 = (MyIterator<Integer>) list2.iterator();
         while (it1.hasNext() && it2.hasNext()) {
