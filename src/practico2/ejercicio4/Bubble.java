@@ -17,14 +17,13 @@ public class Bubble {
     }
 
     /**
-     * @return Arreglo de enteros ordenado por burbujeo.
-     * @description El algoritmo por burbujeo consiste en intercambiar un valor
+     * El algoritmo por burbujeo consiste en intercambiar un valor
      * por el siguiente si este es mayor, lo hace varias veces hasta que no haya
      * mas intercambios
      * */
     private static void sortByBubble(int[] miArreglo) {
         int i = 0;
-        int tmp = 0;
+        int tmp;
         boolean ordenado = false;
         while (!ordenado){
             ordenado = true;
