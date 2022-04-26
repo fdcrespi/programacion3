@@ -56,7 +56,7 @@ public class ArbolBinario {
             heightIzq += arbolizq.getHeight() + 1;
         if (arbolder != null)
             heightDer += arbolder.getHeight() + 1;
-        return (heightIzq > heightDer) ? heightIzq : heightDer;
+        return Math.max(heightIzq, heightDer);
     }
 
     public boolean delete(Integer valor){
