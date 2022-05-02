@@ -19,15 +19,26 @@ public class ArbolBinario {
         this.arbolder = null;
     }
 
+    /**
+     * Retorna la raiz del arbol
+     * Complejidad: O(1)
+     * */
     public Integer getRoot(){
         return this.info;
     }
 
+    /**
+     * Retorna si el arbol tiene un elemento
+     * Complejidad:
+     * O(n) si n es la cantidad de nodos y tengo una enredadera
+     * O(log2n) suponiendo que el arbol esta balanceado
+     * O(h) donde h es la altura del arbol --> mejor opción
+     * */
     public boolean hasElem(Integer valor){
         if (getRoot() == null) return false;
         if (getRoot().equals(valor)) return true;
-        if (arbolizq != null) return arbolizq.hasElem(valor);
-        if (arbolder != null) return arbolder.hasElem(valor);
+        if (valor < getRoot() && arbolizq != null) return arbolizq.hasElem(valor);
+        if (valor > getRoot() && arbolder != null) return arbolder.hasElem(valor);
         return false;
     }
 
@@ -61,6 +72,7 @@ public class ArbolBinario {
 
     public boolean delete(Integer valor){
         if (getRoot() == null) return false;
+        /* Si la raiz es igual */
         if (getRoot().equals(valor)) {
             if (arbolizq == null && arbolder == null) {
                 this.info = null;
@@ -83,10 +95,13 @@ public class ArbolBinario {
                     aux = aux.arbolizq;
                 }
                 this.info = aux.getRoot();
-                this.arbolder = newDer;
+                if (newDer.getRoot() != null) {
+                    this.arbolder = newDer;
+                } else this.arbolder = null;
             }
             return true;
         }
+        /* Si el valor es menor */
         if (valor < getRoot()) {
             if (arbolizq != null) {
                 if (arbolizq.getRoot().equals(valor)) {
@@ -109,6 +124,7 @@ public class ArbolBinario {
                 else arbolizq.delete(valor);
             }
         }
+        /* Si el valor es mayor */
         else if (valor > getRoot()) {
             if (arbolder != null) {
                 if (arbolder.getRoot().equals(valor)) {
@@ -158,6 +174,10 @@ public class ArbolBinario {
         System.out.println(this.stringInOrder());
     }
 
+    /**
+     * Imprime el arbol en orden
+     * Complejidad: O(n) donde n son la cantidad de nodos del arbol
+     * */
     private String stringInOrder(){
         String s = "";
         if (arbolizq != null) s += arbolizq.stringInOrder() + " ";

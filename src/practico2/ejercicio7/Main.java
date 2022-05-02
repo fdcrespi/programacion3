@@ -6,12 +6,14 @@ public class Main {
     public static void main(String[] args) {
         ArbolBinario AB = new ArbolBinario(10);
         AB.insert(9);
+        AB.insert(11);
+/*        AB.insert(9);
         AB.insert(6);
         AB.insert(5);
         AB.insert(12);
         AB.insert(11);
         AB.insert(7);
-        AB.insert(8);
+        AB.insert(8);*/
         AB.printInOrder();
         AB.delete(10);
         AB.printInOrder();
