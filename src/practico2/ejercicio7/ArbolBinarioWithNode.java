@@ -54,13 +54,10 @@ public class ArbolBinarioWithNode {
     }
 
     public boolean delete(Integer value){
-        return deleteElement(root, value);
-    }
-
-    private boolean deleteElement(Node<Integer> nodo, Integer value){
         //TODO
         return false;
     }
+
 }
 
 

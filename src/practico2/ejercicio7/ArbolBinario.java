@@ -19,26 +19,15 @@ public class ArbolBinario {
         this.arbolder = null;
     }
 
-    /**
-     * Retorna la raiz del arbol
-     * Complejidad: O(1)
-     * */
     public Integer getRoot(){
         return this.info;
     }
 
-    /**
-     * Retorna si el arbol tiene un elemento
-     * Complejidad:
-     * O(n) si n es la cantidad de nodos y tengo una enredadera
-     * O(log2n) suponiendo que el arbol esta balanceado
-     * O(h) donde h es la altura del arbol --> mejor opción
-     * */
     public boolean hasElem(Integer valor){
         if (getRoot() == null) return false;
         if (getRoot().equals(valor)) return true;
-        if (valor < getRoot() && arbolizq != null) return arbolizq.hasElem(valor);
-        if (valor > getRoot() && arbolder != null) return arbolder.hasElem(valor);
+        if (arbolizq != null) return arbolizq.hasElem(valor);
+        if (arbolder != null) return arbolder.hasElem(valor);
         return false;
     }
 
@@ -72,15 +61,14 @@ public class ArbolBinario {
 
     public boolean delete(Integer valor){
         if (getRoot() == null) return false;
-        /* Si la raiz es igual */
         if (getRoot().equals(valor)) {
             if (arbolizq == null && arbolder == null) {
                 this.info = null;
             }
             else if (arbolizq == null && arbolder != null) {
                 this.info = arbolder.getRoot();
-                this.arbolder = arbolder.arbolder;
                 this.arbolizq = arbolder.arbolizq;
+                this.arbolder = arbolder.arbolder;
             }
             else if (arbolder == null && arbolizq != null) {
                 this.info = arbolizq.getRoot();
@@ -89,19 +77,16 @@ public class ArbolBinario {
             }
             else {
                 ArbolBinario aux = arbolder;
-                ArbolBinario newDer = new ArbolBinario();
+                ArbolBinario newDer = arbolder;
                 while (aux.arbolizq != null) {
-                    newDer.insert(aux.getRoot());
                     aux = aux.arbolizq;
                 }
                 this.info = aux.getRoot();
-                if (newDer.getRoot() != null) {
-                    this.arbolder = newDer;
-                } else this.arbolder = null;
+                this.arbolder = null;
+                nuevaDerecha(newDer);
             }
             return true;
         }
-        /* Si el valor es menor */
         if (valor < getRoot()) {
             if (arbolizq != null) {
                 if (arbolizq.getRoot().equals(valor)) {
@@ -124,7 +109,6 @@ public class ArbolBinario {
                 else arbolizq.delete(valor);
             }
         }
-        /* Si el valor es mayor */
         else if (valor > getRoot()) {
             if (arbolder != null) {
                 if (arbolder.getRoot().equals(valor)) {
@@ -148,6 +132,14 @@ public class ArbolBinario {
             }
         }
         return false;
+    }
+
+    private void nuevaDerecha(ArbolBinario a){
+        if (a != null) {
+            insert(a.getRoot());
+            if (a.arbolizq != null) nuevaDerecha(a.arbolizq);
+            if (a.arbolder != null) nuevaDerecha(a.arbolder);
+        }
     }
 
     private void setChild(ArbolBinario elemDelete){
@@ -174,10 +166,6 @@ public class ArbolBinario {
         System.out.println(this.stringInOrder());
     }
 
-    /**
-     * Imprime el arbol en orden
-     * Complejidad: O(n) donde n son la cantidad de nodos del arbol
-     * */
     private String stringInOrder(){
         String s = "";
         if (arbolizq != null) s += arbolizq.stringInOrder() + " ";
