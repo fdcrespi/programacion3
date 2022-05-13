@@ -17,7 +17,7 @@ public class DFS {
         this.grafo = grafo;
     }
 
-    public ArrayList<?> recorridoBFS(){
+    public void recorridoDFS(){
         Iterator<Integer> vertices = this.grafo.obtenerVertices();
         while (vertices.hasNext()){
             int verticeId = vertices.next();
@@ -30,7 +30,6 @@ public class DFS {
                 DFS_VISIT(v);
             }
         }
-        return null;
     }
 
     private void DFS_VISIT(int v) {
