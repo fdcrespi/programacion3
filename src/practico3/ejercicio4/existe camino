@@ -1,0 +1,22 @@
+boolean existecamino(origen, destino){
+    if (origen == destino)
+        return true;
+        else {
+            para cada adyacente a origen !visitado {
+                boolean r = existecamino(adyacente, destino);
+                if (r) {
+                    return true;
+                }
+                return false;
+            }
+        }
+}
+
+// solucion
+
+encontrar_camino(origen,destino)
+    if (origen == destino)
+        ...
+    else
+        para cada ady a origen !visitado
+            encontrar_camino(ady,destino)

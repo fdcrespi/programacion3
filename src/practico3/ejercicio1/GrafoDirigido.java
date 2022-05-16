@@ -12,7 +12,8 @@ public class GrafoDirigido<T> implements Grafo<T> {
 	public void agregarVertice(int verticeId) {
 		// TODO Auto-generated method stub
 		// ¿ es necesario controlar si existe o no ?
-		vertices.put(verticeId, new HashMap<>());
+		if (!vertices.containsKey(verticeId))
+			vertices.put(verticeId, new HashMap<>());
 	}
 
 	@Override
@@ -79,7 +80,7 @@ public class GrafoDirigido<T> implements Grafo<T> {
 		for (int key: vertices.keySet()){
 			cantidadArcos += vertices.get(key).size();
 		}
-		return 0;
+		return cantidadArcos;
 	}
 
 	@Override
